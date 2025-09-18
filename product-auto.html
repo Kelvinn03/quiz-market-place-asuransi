@@ -1,22 +1,77 @@
-<!doctype html><html lang="id"><head>
-    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Sehat Pro Plus — Detail</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/>
-    </head><body>
-    <nav class="nav"><div class="container"><a class="brand" href="index.html"><img src="assets/placeholder.jpg" alt=""/> Insurance Hub</a><div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
-    <main class="container">
-      <div class="grid cols-2">
-        <div class="card">
-          <img class="cover" src="assets/placeholder.jpg" alt=""/>
-          <h2>Sehat Pro Plus</h2><p class="small">Jenis: Kesehatan</p><hr/>
-          <h3>Manfaat Utama</h3>
-          <ul class="small"><li>Rawat inap s/d kelas VIP</li><li>Rawat jalan & obat</li><li>Proteksi ICU & tindakan bedah</li><li>Klaim cashless di jaringan RS</li></ul>
-          <div class="actions" style="margin-top:12px"><a class="btn primary" href="buy-health.html">Beli Sekarang</a> <a class="btn" href="index.html">Kembali</a></div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>DriveGuard Auto — Product</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="assets/logo.svg" alt="" width="24" height="24"/><span>InsureHub</span></a>
+      <nav class="nav">
+        <a href="login.html">Log in</a>
+        <a class="pill" href="signup.html">Create account</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="product-hero">
+    <div class="wrap">
+      <div class="breadcrumb small"><a href="index.html">Home</a><span class="sep">/</span><span>Auto</span></div>
+      <img class="product-cover" src="assets/sample.jpg" alt="DriveGuard cover">
+      <div class="product-header">
+        <h1 style="margin:0 0 4px">DriveGuard Auto</h1>
+        <p class="muted small">Type: Car insurance · All Risk + TLO</p>
+        <div class="pills">
+          <span class="pill">All risk</span><span class="pill">Total loss</span><span class="pill">Theft & disaster</span>
         </div>
-        <div class="card"><h3>Ringkasan</h3><p class="helper">Contoh konten; placeholder</p><div class="notice small">Quiz FE.</div></div>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="buy-auto.html">Buy now</a>
+          <a class="btn btn--ghost" href="index.html">Back</a>
+        </div>
       </div>
-    </main>
-    <footer><div class="container small">© 2025</div></footer>
-    <script src="app.js"></script>
-    </body></html>
-    
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="product-grid">
+      <article class="panel">
+        <h3>Coverage highlights</h3>
+        <ul class="bullets">
+          <li>Collision, overturning, external impact</li>
+          <li>Theft & vandalism</li>
+          <li>Natural disasters (flood, earthquake, etc.)</li>
+          <li>Third-party liability (optional)</li>
+        </ul>
+        <div class="hr"></div>
+        <h3>Premium calculation</h3>
+        <p class="note">
+          Based on vehicle age and price:
+          <br>• ≤3 years: <strong>2.5%</strong> of car price
+          <br>• 3–5 years: <strong>4%</strong> (&lt;200M) or <strong>3%</strong> (≥200M)
+          <br>• &gt;5 years: <strong>5%</strong>
+        </p>
+        <p class="small muted">You’ll see the exact number on the purchase form.</p>
+      </article>
+
+      <aside class="panel">
+        <h3>Vehicle requirements</h3>
+        <div class="kv">
+          <div>Age limit</div><div>Up to 15 years</div>
+          <div>Docs needed</div><div>Plate, engine, chassis numbers</div>
+          <div>Photos</div><div>6 sides (front/back/left/right/dashboard/engine)</div>
+          <div>Use</div><div>Personal (non-commercial)</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap small muted">© 2025 InsureHub · Coursework demo</div>
+  </footer>
+</body>
+</html>

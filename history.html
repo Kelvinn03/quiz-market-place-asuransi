@@ -1,0 +1,23 @@
+<!doctype html><html lang="id"><head>
+    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Histori Pembelian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/>
+    </head><body>
+    <nav class="nav"><div class="container"><a class="brand" href="index.html"><img src="assets/logo.svg" alt=""/> InsureHub</a><div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
+    <main class="container">
+      <div class="card">
+        <h2>Histori Pembelian</h2>
+        <table class="table"><thead><tr><th>Nama Produk</th><th>Jenis</th><th>Tanggal</th><th>Harga</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table>
+        <div class="helper">Data disimpan lokal (localStorage).</div>
+      </div>
+    </main>
+    <footer><div class="container small">© 2025</div></footer>
+    <script src="app.js"></script>
+    <script>
+      const list=ls.get('history',[]), rows=document.getElementById('rows');
+      rows.innerHTML = list.length? list.map(it=>`
+        <tr><td>${it.name}</td><td>${it.type}</td><td>${fmt.date(it.date)}</td><td>${fmt.money(it.premium)}</td><td><span class="tag">${it.status}</span></td></tr>
+      `).join('') : '<tr><td colspan="5" class="small">Belum ada pembelian.</td></tr>';
+    </script>
+    </body></html>
+    

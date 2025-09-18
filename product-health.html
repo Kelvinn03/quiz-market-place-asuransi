@@ -1,22 +1,81 @@
-<!doctype html><html lang="id"><head>
-    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Sehat Pro Plus — Detail</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/>
-    </head><body>
-    <nav class="nav"><div class="container"><a class="brand" href="index.html"><img src="assets/placeholder.jpg" alt=""/> Insurance Hub</a><div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
-    <main class="container">
-      <div class="grid cols-2">
-        <div class="card">
-          <img class="cover" src="assets/placeholder.jpg" alt=""/>
-          <h2>Sehat Pro Plus</h2><p class="small">Jenis: Kesehatan</p><hr/>
-          <h3>Manfaat Utama</h3>
-          <ul class="small"><li>Rawat inap s/d kelas VIP</li><li>Rawat jalan & obat</li><li>Proteksi ICU & tindakan bedah</li><li>Klaim cashless di jaringan RS</li></ul>
-          <div class="actions" style="margin-top:12px"><a class="btn primary" href="buy-health.html">Beli Sekarang</a> <a class="btn" href="index.html">Kembali</a></div>
-        </div>
-        <div class="card"><h3>Ringkasan</h3><p class="helper">Contoh konten; placeholder</p><div class="notice small">Quiz FE.</div></div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Care+ Health — Product</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <!-- Topbar (same style as home) -->
+  <header class="topbar">
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="assets/logo.svg" alt="" width="24" height="24"/><span>InsureHub</span></a>
+      <nav class="nav">
+        <a href="login.html">Log in</a>
+        <a class="pill" href="signup.html">Create account</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Cover -->
+  <section class="product-hero">
+    <div class="wrap">
+      <div class="breadcrumb small">
+        <a href="index.html">Home</a><span class="sep">/</span><span>Health</span>
       </div>
-    </main>
-    <footer><div class="container small">© 2025</div></footer>
-    <script src="app.js"></script>
-    </body></html>
-    
+      <img class="product-cover" src="assets/sample.jpg" alt="Care+ Health cover">
+      <div class="product-header">
+        <h1 style="margin:0 0 4px">Care+ Health</h1>
+        <p class="muted small">Type: Health insurance · Inpatient & Outpatient</p>
+        <div class="pills">
+          <span class="pill">Cashless network</span>
+          <span class="pill">ICU & surgery</span>
+          <span class="pill">Medicine included</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="buy-health.html">Buy now</a>
+          <a class="btn btn--ghost" href="index.html">Back</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details -->
+  <main class="wrap">
+    <div class="product-grid">
+      <article class="panel">
+        <h3>What’s covered</h3>
+        <ul class="bullets">
+          <li>Inpatient room up to VIP class</li>
+          <li>Outpatient visits & prescriptions</li>
+          <li>ICU, surgery, and emergency care</li>
+          <li>Nationwide partner hospitals (cashless)</li>
+        </ul>
+        <div class="hr"></div>
+        <h3>How the premium is calculated</h3>
+        <p class="note">
+          Annual premium = <strong>P + mP + (k₁·0.5P) + (k₂·0.4P) + (k₃·0.5P)</strong> where P=2,000,000; m depends on age; k’s are 1 if you smoke / have hypertension / diabetes.
+        </p>
+        <p class="small muted">You’ll see the exact number live on the purchase form.</p>
+      </article>
+
+      <aside class="panel">
+        <h3>Key facts</h3>
+        <div class="kv">
+          <div>Network</div><div>Cashless hospitals & clinics</div>
+          <div>Claim type</div><div>Cashless & reimbursement</div>
+          <div>Waiting period</div><div>30 days (illness), 0 (accident)</div>
+          <div>Eligibility</div><div>Age 18–60 (main insured)</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap small muted">© 2025 InsureHub · Coursework demo</div>
+  </footer>
+</body>
+</html>

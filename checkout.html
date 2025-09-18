@@ -1,0 +1,43 @@
+<!doctype html><html lang="id"><head>
+    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/>
+    </head><body>
+    <nav class="nav"><div class="container"><a class="brand" href="index.html"><img src="assets/logo.svg" alt=""/> InsureHub</a><div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
+    <main class="container">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Ringkasan Pembayaran</h2>
+          <div id="summary" class="small"></div>
+          <hr/>
+          <div class="form-group">
+            <div class="label">Metode Pembayaran</div>
+            <select class="input" id="payMethod"><option>Virtual Account</option><option>Kartu Kredit/Debit</option><option>e-Wallet</option></select>
+          </div>
+          <button id="payBtn" class="btn success">Bayar Sekarang</button>
+          <div class="helper">Simulasi pembayaran — selalu berhasil.</div>
+        </div>
+        <div class="card"><h3>Catatan</h3><p class="helper">Setelah berhasil, data masuk ke Histori Pembelian.</p></div>
+      </div>
+    </main>
+    <footer><div class="container small">© 2025</div></footer>
+    <script src="app.js"></script>
+    <script>
+      const data=ls.get('checkout',null), s=document.getElementById('summary');
+      if(!data){ s.innerHTML='<div class="error">Tidak ada data checkout.</div>'; }
+      else{
+        s.innerHTML = `
+          <div class="kpi">Produk: <strong>${data.product}</strong></div>
+          <div class="kpi">Jenis: <strong>${data.kind}</strong></div>
+          <div class="kpi">Harga Premi: <strong>${fmt.money(data.premium)}</strong></div>`;
+      }
+      document.getElementById('payBtn').onclick=()=>{
+        if(!auth.isLoggedIn()){ alert('Harus login.'); location.href='login.html'; return; }
+        if(!data){ alert('Data checkout tidak ditemukan.'); return; }
+        const u=auth.user();
+        pushHistory({name:data.product,type:data.kind,premium:data.premium,status:'Lunas',date:new Date().toISOString(),buyer:u?u.email:'guest'});
+        alert('Pembayaran berhasil!'); location.href='history.html';
+      };
+    </script>
+    </body></html>
+    

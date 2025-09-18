@@ -1,39 +1,126 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Insurance Hub — Marketplace Asuransi</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>InsureHub — Compare & protect</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container">
-      <a class="brand" href="index.html"><img src="assets/placeholder.jpg" alt="Logo"/> InsuranceHub</a>
-      <div class="spacer"></div>
-      <div id="nav-right" class="actions"></div>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="container">
-      <div class="card">
-        <h1>Semua Asuransi dalam Satu Tempat</h1>
-        <p class="helper">Bandingkan dan beli asuransi <strong>Kesehatan</strong>, <strong>Mobil</strong>, dan <strong>Jiwa</strong> dari berbagai perusahaan—mudah dan tepercaya.</p>
-        <div class="kpi"><span class="badge">Tujuan</span> <strong>Belajar Front End</strong> <span class="small">(Simulasi)</span></div>
-      </div>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="wrap">
+      <a class="logo" href="index.html">
+        <img src="assets/logo.svg" alt="" width="24" height="24"/>
+        <span>InsureHub</span>
+      </a>
+      <nav class="nav">
+        <a href="login.html">Log in</a>
+        <a class="pill" href="signup.html">Create account</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h2>Pilihan Produk</h2>
-    <section id="products" class="grid cols-3"></section>
+  <main>
+    <!-- Hero (distinct diagonal shape) -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <h1>Smart insurance choices, made simple.</h1>
+          <p>Compare health, auto, and life protection in minutes. Transparent prices, clear benefits.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="product-health.html">Start a quote</a>
+            <a class="btn btn--ghost" href="#categories">Explore categories</a>
+          </div>
+        </div>
+        <figure class="hero__media">
+          <img src="assets/sample.jpg" alt="People smiling" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Quick actions (original tile style) -->
+    <section class="tiles" id="categories">
+      <div class="wrap tiles__grid">
+        <a class="tile" href="buy-health.html">
+          <span class="tile__dot">1</span>
+          <div>
+            <h3>Check eligibility</h3>
+            <p class="muted">See if it’s the right time to enroll or switch.</p>
+          </div>
+        </a>
+        <a class="tile" href="buy-auto.html">
+          <span class="tile__dot">2</span>
+          <div>
+            <h3>Estimate your premium</h3>
+            <p class="muted">Instant math for your car, health, or life plan.</p>
+          </div>
+        </a>
+        <a class="tile" href="buy-life.html">
+          <span class="tile__dot">3</span>
+          <div>
+            <h3>Save your progress</h3>
+            <p class="muted">Create an account to keep quotes in one place.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Feature band -->
+    <section class="band">
+      <div class="wrap band__grid">
+        <div>
+          <h2>Benefits that actually help</h2>
+          <ul class="checklist">
+            <li>Clear coverage summaries</li>
+            <li>Local partner network</li>
+            <li>No surprise fees</li>
+          </ul>
+          <a class="btn" href="product-life.html">See plan details</a>
+        </div>
+        <figure class="band__media">
+          <img src="assets/sample.jpg" alt="" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Your product cards (rendered by JS) -->
+    <section class="wrap">
+      <h2 class="section-title">Browse products</h2>
+      <div id="products" class="cards"></div>
+    </section>
   </main>
 
-  <footer><div class="container small">© 2025 Insurance Hub (Demo marketplace). For Front-End Programming Class only.</div></footer>
+  <footer class="site-footer">
+    <div class="wrap footer__grid">
+      <div>
+        <h4>InsureHub</h4>
+        <p class="muted small">© 2025 Demo for coursework. Front-end only.</p>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="login.html">Manage account</a></li>
+          <li><a href="history.html">Purchase history</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#">How quotes work</a></li>
+          <li><a href="#">Understanding premiums</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
   <script src="app.js"></script>
-  <script>renderProducts('#products')</script>
+  <script>
+    renderProducts('#products');
+    const close = document.querySelector('.note__close');
+    if (close) close.addEventListener('click', ()=> document.getElementById('site-note')?.remove());
+  </script>
 </body>
 </html>
