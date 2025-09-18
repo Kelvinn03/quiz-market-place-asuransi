@@ -1,59 +1,69 @@
 <!doctype html><html lang="id"><head>
-    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Beli Asuransi Mobil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/>
-    </head><body>
-    <nav class="nav"><div class="container"><a class="brand" href="index.html"><img src="assets/logo.svg" alt=""/> InsureHub</a><div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
-    <main class="container">
-      <div class="card">
-        <h2>Form Pembelian — Mobil</h2>
-        <div class="notice small">Harus login untuk melanjutkan. <a href="login.html">Login</a></div>
-        <form id="autoForm">
-          <div class="row">
-            <div class="form-group"><div class="label">Merk Mobil</div><input class="input" name="brand" required></div>
-            <div class="form-group"><div class="label">Jenis/Model</div><input class="input" name="model" required></div>
-          </div>
-          <div class="row">
-            <div class="form-group"><div class="label">Tahun Pembuatan</div><input class="input" name="year" type="number" min="1980" max="2025" required></div>
-            <div class="form-group"><div class="label">Harga Mobil</div><input class="input" name="price" type="number" min="0" step="1000000" required></div>
-          </div>
-          <div class="row">
-            <div class="form-group"><div class="label">Nomor Plat</div><input class="input" name="plate" required></div>
-            <div class="form-group"><div class="label">Nomor Mesin</div><input class="input" name="engine" required></div>
-          </div>
-          <div class="row">
-            <div class="form-group"><div class="label">Nomor Rangka</div><input class="input" name="chassis" required></div>
-            <div class="form-group"><div class="label">Nama Pemilik</div><input class="input" name="owner" required></div>
-          </div>
-          <div class="row row-3">
-            <div class="form-group"><div class="label">Foto Depan</div><input class="input" type="file" name="f1" accept="image/*" required></div>
-            <div class="form-group"><div class="label">Foto Belakang</div><input class="input" type="file" name="f2" accept="image/*" required></div>
-            <div class="form-group"><div class="label">Foto Kiri</div><input class="input" type="file" name="f3" accept="image/*" required></div>
-            <div class="form-group"><div class="label">Foto Kanan</div><input class="input" type="file" name="f4" accept="image/*" required></div>
-            <div class="form-group"><div class="label">Foto Dashboard</div><input class="input" type="file" name="f5" accept="image/*" required></div>
-            <div class="form-group"><div class="label">Foto Mesin</div><input class="input" type="file" name="f6" accept="image/*" required></div>
-          </div>
-          <hr/>
-          <div id="autoPremi" class="kpi">Premi per tahun: <strong id="autoPremiVal">-</strong></div>
-          <div class="actions" style="margin-top:12px"><button class="btn primary" type="submit">Lanjut Checkout</button> <a class="btn" href="product-auto.html">Kembali</a></div>
-          <div id="autoError" class="error" style="display:none"></div>
-        </form>
-      </div>
-    </main>
-    <footer><div class="container small">© 2025</div></footer>
-    <script src="app.js"></script>
-    <script>
-      const f=document.getElementById('autoForm'), out=document.getElementById('autoPremiVal'), err=document.getElementById('autoError');
-      function recalc(){ const y=Number(f.year.value||0), p=Number(f.price.value||0); out.textContent=(y&&p)?fmt.money(calc.carPremium(p,y)):'-'; }
-      f.year.addEventListener('input', recalc); f.price.addEventListener('input', recalc);
-      f.addEventListener('submit',(e)=>{
-        e.preventDefault(); err.style.display='none';
-        for(const el of f.querySelectorAll('input[required]')){ if(!el.value){ err.textContent='Semua field wajib diisi.'; err.style.display='block'; return; } }
-        if(!validators.plate(f.plate.value)){ err.textContent='Format plat tidak valid.'; err.style.display='block'; return; }
-        const premium = calc.carPremium(Number(f.price.value), Number(f.year.value));
-        ls.set('checkout',{kind:'Mobil',product:'AutoGuard Max',premium,meta:{brand:f.brand.value,model:f.model.value,year:f.year.value,price:f.price.value}});
-        location.href='checkout.html';
-      });
-    </script>
-    </body></html>
-    
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Beli Asuransi Mobil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head><body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="assets/logo.svg" alt="" width="24" height="24"/><span>InsureHub</span></a>
+      <nav class="nav"><a href="login.html">Log in</a><a class="pill" href="signup.html">Create account</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <h2>Form Pembelian — Mobil</h2>
+      <div class="note small">Harus login untuk melanjutkan. <a href="login.html">Login</a></div>
+      <form id="autoForm">
+        <div class="row">
+          <div class="form-group"><div class="label">Merk Mobil</div><input class="input" name="brand" required></div>
+          <div class="form-group"><div class="label">Jenis/Model</div><input class="input" name="model" required></div>
+        </div>
+        <div class="row">
+          <div class="form-group"><div class="label">Tahun Pembuatan</div><input class="input" name="year" type="number" min="1980" max="2025" required></div>
+          <div class="form-group"><div class="label">Harga Mobil</div><input class="input" name="price" type="number" min="0" step="1000000" required></div>
+        </div>
+        <div class="row">
+          <div class="form-group"><div class="label">Nomor Plat</div><input class="input" name="plate" required></div>
+          <div class="form-group"><div class="label">Nomor Mesin</div><input class="input" name="engine" required></div>
+        </div>
+        <div class="row">
+          <div class="form-group"><div class="label">Nomor Rangka</div><input class="input" name="chassis" required></div>
+          <div class="form-group"><div class="label">Nama Pemilik</div><input class="input" name="owner" required></div>
+        </div>
+        <div class="row row-3">
+          <div class="form-group"><div class="label">Foto Depan</div><input class="input" type="file" name="f1" accept="image/*" required></div>
+          <div class="form-group"><div class="label">Foto Belakang</div><input class="input" type="file" name="f2" accept="image/*" required></div>
+          <div class="form-group"><div class="label">Foto Kiri</div><input class="input" type="file" name="f3" accept="image/*" required></div>
+          <div class="form-group"><div class="label">Foto Kanan</div><input class="input" type="file" name="f4" accept="image/*" required></div>
+          <div class="form-group"><div class="label">Foto Dashboard</div><input class="input" type="file" name="f5" accept="image/*" required></div>
+          <div class="form-group"><div class="label">Foto Mesin</div><input class="input" type="file" name="f6" accept="image/*" required></div>
+        </div>
+        <hr/>
+        <div id="autoPremi" class="kpi">Premi per tahun: <strong id="autoPremiVal">-</strong></div>
+        <div class="actions" style="margin-top:12px">
+          <button class="btn primary" type="submit">Lanjut Checkout</button>
+          <a class="btn" href="product-auto.html">Kembali</a>
+        </div>
+        <div id="autoError" class="error" style="display:none"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="wrap small muted">© 2025</div></footer>
+  <script src="app.js"></script>
+  <script>
+    const f=document.getElementById('autoForm'), out=document.getElementById('autoPremiVal'), err=document.getElementById('autoError');
+    function recalc(){ const y=Number(f.year.value||0), p=Number(f.price.value||0); out.textContent=(y&&p)?fmt.money(calc.carPremium(p,y)):'-'; }
+    f.year.addEventListener('input', recalc); f.price.addEventListener('input', recalc);
+    f.addEventListener('submit',(e)=>{
+      e.preventDefault(); err.style.display='none';
+      for(const el of f.querySelectorAll('input[required]')){ if(!el.value){ err.textContent='Semua field wajib diisi.'; err.style.display='block'; return; } }
+      if(!validators.plate(f.plate.value)){ err.textContent='Format plat tidak valid.'; err.style.display='block'; return; }
+      const premium = calc.carPremium(Number(f.price.value), Number(f.year.value));
+      ls.set('checkout',{kind:'Mobil',product:'AutoGuard Max',premium,meta:{brand:f.brand.value,model:f.model.value,year:f.year.value,price:f.price.value}});
+      location.href='checkout.html';
+    });
+  </script>
+</body></html>

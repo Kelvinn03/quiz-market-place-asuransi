@@ -1,51 +1,62 @@
 <!doctype html><html lang="id"><head>
-    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Beli Asuransi Kesehatan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/>
-    </head><body>
-    <nav class="nav"><div class="container"><a class="brand" href="index.html"><img src="assets/placeholder.jpg" alt=""/> Insurance Hub</a><div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
-    <main class="container">
-      <div class="card">
-        <h2>Form Pembelian Health</h2>
-        <form id="healthForm">
-          <div class="form-group"><div class="label">Nama Lengkap</div><input class="input" name="full" required></div>
-          <div class="row">
-            <div class="form-group"><div class="label">Tanggal Lahir</div><input class="input" type="date" name="dob" required></div>
-            <div class="form-group"><div class="label">Pekerjaan</div><input class="input" name="job" required></div>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Beli Asuransi Kesehatan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head><body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="assets/logo.svg" alt="" width="24" height="24"/><span>InsureHub</span></a>
+      <nav class="nav"><a href="login.html">Log in</a><a class="pill" href="signup.html">Create account</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <h2>Form Pembelian — Kesehatan</h2>
+      <form id="healthForm">
+        <div class="form-group"><div class="label">Nama Lengkap</div><input class="input" name="full" required></div>
+        <div class="row">
+          <div class="form-group"><div class="label">Tanggal Lahir</div><input class="input" type="date" name="dob" required></div>
+          <div class="form-group"><div class="label">Pekerjaan</div><input class="input" name="job" required></div>
+        </div>
+        <div class="row">
+          <div class="form-group"><div class="label">Merokok?</div>
+            <select class="input" name="smoke" required><option value="">Pilih</option><option value="yes">Ya</option><option value="no">Tidak</option></select>
           </div>
-          <div class="row">
-            <div class="form-group"><div class="label">Merokok?</div>
-              <select class="input" name="smoke" required><option value="">Pilih</option><option value="yes">Ya</option><option value="no">Tidak</option></select>
-            </div>
-            <div class="form-group"><div class="label">Riwayat Hipertensi?</div>
-              <select class="input" name="htn" required><option value="">Pilih</option><option value="yes">Ya</option><option value="no">Tidak</option></select>
-            </div>
+          <div class="form-group"><div class="label">Riwayat Hipertensi?</div>
+            <select class="input" name="htn" required><option value="">Pilih</option><option value="yes">Ya</option><option value="no">Tidak</option></select>
           </div>
-          <div class="form-group"><div class="label">Diabetes?</div>
-            <select class="input" name="dm" required><option value="">Pilih</option><option value="yes">Ya</option><option value="no">Tidak</option></select>
-          </div>
-          <hr/>
-          <div class="kpi">Premi per tahun: <strong id="healthPremi">-</strong></div>
-          <div class="actions" style="margin-top:12px"><button class="btn primary" type="submit">Lanjut Checkout</button> <a class="btn" href="product-health.html">Kembali</a></div>
-          <div id="healthError" class="error" style="display:none"></div>
-        </form>
-      </div>
-    </main>
-    <footer><div class="container small">© 2025</div></footer>
-    <script src="app.js"></script>
-    <script>
-      const f=document.getElementById('healthForm'), out=document.getElementById('healthPremi'), err=document.getElementById('healthError');
-      function recalc(){
-        const dob=f.dob.value; const smoke=f.smoke.value==='yes', htn=f.htn.value==='yes', dm=f.dm.value==='yes';
-        out.textContent = (dob && f.smoke.value && f.htn.value && f.dm.value) ? fmt.money(calc.healthPremium(dob,smoke,htn,dm)) : '-';
-      }
-      f.addEventListener('input', recalc);
-      f.addEventListener('submit',(e)=>{
-        e.preventDefault(); if(!f.dob.value||!f.smoke.value||!f.htn.value||!f.dm.value){ err.textContent='Semua field wajib diisi.'; err.style.display='block'; return; }
-        const premium=calc.healthPremium(f.dob.value, f.smoke.value==='yes', f.htn.value==='yes', f.dm.value==='yes');
-        ls.set('checkout',{kind:'Kesehatan',product:'Sehat Pro Plus',premium,meta:{full:f.full.value,job:f.job.value,dob:f.dob.value}});
-        location.href='checkout.html';
-      });
-    </script>
-    </body></html>
-    
+        </div>
+        <div class="form-group"><div class="label">Diabetes?</div>
+          <select class="input" name="dm" required><option value="">Pilih</option><option value="yes">Ya</option><option value="no">Tidak</option></select>
+        </div>
+        <hr/>
+        <div class="kpi">Premi per tahun: <strong id="healthPremi">-</strong></div>
+        <div class="actions" style="margin-top:12px">
+          <button class="btn primary" type="submit">Lanjut Checkout</button>
+          <a class="btn" href="product-health.html">Kembali</a>
+        </div>
+        <div id="healthError" class="error" style="display:none"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="wrap small muted">© 2025</div></footer>
+  <script src="app.js"></script>
+  <script>
+    const f=document.getElementById('healthForm'), out=document.getElementById('healthPremi'), err=document.getElementById('healthError');
+    function recalc(){
+      const dob=f.dob.value; const smoke=f.smoke.value==='yes', htn=f.htn.value==='yes', dm=f.dm.value==='yes';
+      out.textContent = (dob && f.smoke.value && f.htn.value && f.dm.value) ? fmt.money(calc.healthPremium(dob,smoke,htn,dm)) : '-';
+    }
+    f.addEventListener('input', recalc);
+    f.addEventListener('submit',(e)=>{
+      e.preventDefault(); err.style.display='none';
+      if(!f.dob.value||!f.smoke.value||!f.htn.value||!f.dm.value){ err.textContent='Semua field wajib diisi.'; err.style.display='block'; return; }
+      const premium = calc.healthPremium(f.dob.value, f.smoke.value==='yes', f.htn.value==='yes', f.dm.value==='yes');
+      ls.set('checkout',{kind:'Kesehatan',product:'Sehat Pro Plus',premium,meta:{full:f.full.value,job:f.job.value,dob:f.dob.value}});
+      location.href='checkout.html';
+    });
+  </script>
+</body></html>
