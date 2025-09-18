@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sign Up — Insurance Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <nav class="nav"><div class="container">
+    <a class="brand" href="index.html"><img src="assets/placeholder.jpg" alt="Logo"/> InsuranceHub</a>
+    <div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
+
+  <main class="container">
+    <div class="card">
+      <h2>Buat Akun</h2>
+      <form id="signupForm">
+        <div class="row">
+          <div class="form-group"><div class="label">Email</div><input class="input" name="email" type="email" required></div>
+          <div class="form-group"><div class="label">Nomor Handphone</div><input class="input" name="phone" type="tel" placeholder="08xxxxxxxxxx" required></div>
+        </div>
+        <div class="row">
+          <div class="form-group"><div class="label">Kata Sandi (min 8)</div><input class="input" name="password" type="password" required></div>
+          <div class="form-group"><div class="label">Konfirmasi Kata Sandi</div><input class="input" name="confirm" type="password" required></div>
+        </div>
+        <div class="form-group"><div class="label">Nama Lengkap</div><input class="input" name="fullname" type="text" required></div>
+        <div id="signupError" class="error" style="display:none"></div>
+        <div class="actions"><button class="btn success" type="submit">Daftar</button> <a class="btn" href="index.html">Kembali</a> <a class="btn" href="login.html">Sudah punya akun? Login</a></div>
+        <p class="helper">Nama 3–32 karakter, tanpa angka. Nomor HP mulai 08, hanya angka, panjang 10–16.</p>
+      </form>
+    </div>
+  </main>
+
+  <footer><div class="container small">© 2025</div></footer>
+  <script src="app.js"></script>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const f=e.target, email=f.email.value.trim(), phone=f.phone.value.trim(), pw=f.password.value, cf=f.confirm.value, fullname=f.fullname.value.trim();
+      const err=document.getElementById('signupError'); err.style.display='none'; err.textContent='';
+      if(!validators.email(email)){ err.textContent='Email tidak valid.'; err.style.display='block'; return; }
+      if(!validators.phone(phone)){ err.textContent='Nomor HP harus mulai 08, hanya angka, panjang 10–16 digit.'; err.style.display='block'; return; }
+      if(!validators.password(pw)){ err.textContent='Kata sandi minimal 8 karakter.'; err.style.display='block'; return; }
+      if(pw!==cf){ err.textContent='Konfirmasi kata sandi tidak sama.'; err.style.display='block'; return; }
+      if(!validators.name(fullname)){ err.textContent='Nama 3–32 karakter, tanpa angka.'; err.style.display='block'; return; }
+      const res=auth.signup({email, phone, password:pw, fullname});
+      if(res.ok){ alert('Registrasi berhasil! Silakan login.'); location.href='login.html'; }
+    });
+  </script>
+</body>
+</html>

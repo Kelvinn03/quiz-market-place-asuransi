@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Insurance Hub — Marketplace Asuransi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="assets/placeholder.jpg" alt="Logo"/> InsuranceHub</a>
+      <div class="spacer"></div>
+      <div id="nav-right" class="actions"></div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="card">
+        <h1>Semua Asuransi dalam Satu Tempat</h1>
+        <p class="helper">Bandingkan dan beli asuransi <strong>Kesehatan</strong>, <strong>Mobil</strong>, dan <strong>Jiwa</strong> dari berbagai perusahaan—mudah dan tepercaya.</p>
+        <div class="kpi"><span class="badge">Tujuan</span> <strong>Belajar Front End</strong> <span class="small">(Simulasi)</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Pilihan Produk</h2>
+    <section id="products" class="grid cols-3"></section>
+  </main>
+
+  <footer><div class="container small">© 2025 Insurance Hub (Demo marketplace). For Front-End Programming Class only.</div></footer>
+  <script src="app.js"></script>
+  <script>renderProducts('#products')</script>
+</body>
+</html>

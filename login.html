@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Login — Insurance Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <nav class="nav"><div class="container">
+    <a class="brand" href="index.html"><img src="assets/placeholder.jpg" alt="Logo"/> InsuranceHub</a>
+    <div class="spacer"></div><div id="nav-right" class="actions"></div></div></nav>
+
+  <main class="container">
+    <div class="grid cols-2">
+      <div class="card">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <div class="form-group"><div class="label">Email</div><input class="input" name="email" type="email" required></div>
+          <div class="form-group"><div class="label">Kata Sandi</div><input class="input" name="password" type="password" required></div>
+          <div id="loginError" class="error" style="display:none"></div>
+          <div class="actions"><button class="btn primary" type="submit">Masuk</button><a class="btn" href="signup.html">Sign Up</a></div>
+          <p class="helper">Simulasi login menggunakan data dari halaman Sign Up.</p>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Ketentuan Validasi</h3>
+        <ul class="small"><li>Email & kata sandi wajib.</li><li>Email harus format valid.</li></ul>
+      </div>
+    </div>
+  </main>
+
+  <footer><div class="container small">© 2025</div></footer>
+  <script src="app.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email=e.target.email.value.trim(), password=e.target.password.value;
+      const err=document.getElementById('loginError'); err.style.display='none';
+      if(!validators.email(email)){ err.textContent='Format email tidak valid.'; err.style.display='block'; return; }
+      if(!password){ err.textContent='Kata sandi wajib diisi.'; err.style.display='block'; return; }
+      const res=auth.login(email,password);
+      if(!res.ok){ err.textContent=res.msg; err.style.display='block'; return; }
+      location.href='index.html';
+    });
+  </script>
+</body>
+</html>
