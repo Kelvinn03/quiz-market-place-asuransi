@@ -135,3 +135,114 @@ ul.bullets{margin:6px 0 0 18px; padding:0}
 .note{font-size:var(--s-1); color:#475569}
 
 .hr{border:none; height:1px; background:var(--line); margin:16px 0}
+
+/* --- Tile layout & type polish --- */
+.tiles__grid{gap:16px}
+.tile{
+  display:grid; grid-template-columns:auto 1fr; align-items:start;
+  gap:14px; padding:16px 18px; border-radius:16px;
+  background:#fff; border:1px solid var(--line); box-shadow:0 8px 26px rgba(2,8,23,.06);
+}
+.tile__dot{
+  width:36px; height:36px; display:grid; place-items:center; border-radius:50%;
+  background:#eef3ff; color:#1e3a8a; font-weight:700; border:1px solid #dbe2ff;
+}
+.tile h3{ margin:2px 0 6px; font-size: clamp(1.02rem, .9rem + .6vw, 1.25rem); color:#1e3a8a }
+.tile p{ margin:0; color:#667085; font-size: clamp(.92rem, .86rem + .2vw, 1rem); line-height:1.55 }
+
+/* --- Global horizontal rhythm (same left edge everywhere) --- */
+:root{ --wrap-pad: 32px }             /* tweak here if you want wider/narrower margins */
+.wrap{ max-width:1120px; padding-left:var(--wrap-pad); padding-right:var(--wrap-pad) }
+
+/* Make sure common sections respect the same inner rhythm */
+.hero__inner, .tiles__grid, .band__grid, .footer__grid{ padding-left:0; padding-right:0 }
+.section-title{ margin-left:0 }       /* keeps “Browse products” aligned with cards */
+
+/* --- Product card flag (top-right) --- */
+.card--product{ position:relative; }
+.card__flag{
+  position:absolute; top:12px; right:12px; z-index:2;
+  padding:6px 10px; font-size:12px; color:#475569;
+  background:#f3f6fb; border:1px solid var(--line); border-radius:999px;
+  box-shadow:0 6px 18px rgba(2,8,23,.06);
+}
+/* bump image a bit so flag doesn't overlap the edge */
+.card--product .cover{ height:180px; object-fit:cover; border-radius:12px }
+
+/* ==== Global spacing rhythm & alignment ==== */
+:root{
+  --page-x: 32px;   /* left/right page padding */
+  --page-y: 28px;   /* vertical spacing between bands/sections */
+  --gap: 16px;      /* default grid gap */
+}
+
+/* one consistent left/right edge everywhere */
+.wrap{ max-width:1120px; padding-left:var(--page-x); padding-right:var(--page-x) }
+
+/* section rhythm */
+.section{ padding: var(--page-y) 0 }
+main > .wrap{ padding-top: var(--page-y); padding-bottom: var(--page-y) }
+
+/* tighten hero/tiles/band offsets so edges line up */
+.hero{ margin-top: 8px; }
+.tiles{ margin-top: 6px; }
+.band{ margin-top: 8px; }
+
+/* headings & grids */
+.section-title{ margin: 6px 0 14px; }
+.cards{ display:grid; gap: var(--gap); grid-template-columns: repeat(3,1fr); }
+@media (max-width: 980px){ .cards{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px){ .cards{ grid-template-columns: 1fr; } }
+
+/* card padding normalized */
+.card{ padding: 16px; }
+.card .cover{ height: 180px; object-fit: cover; border-radius: 12px; }
+
+/* tiles polish (keeps your current look, but aligns text nicely) */
+.tiles__grid{ gap: var(--gap); }
+.tile{ padding: 16px 18px; gap: 14px; }
+.tile h3{ margin: 2px 0 6px; }
+.tile p{ margin: 0; }
+
+/* benefits band: ensure equal inner spacing for both columns */
+.band__grid{ gap: 24px; }
+
+/* ===== Typographic spacing / rhythm ===== */
+:root{
+  --leading: 1.6;
+  --lh-tight: 1.2;
+  --s-1: 6px; --s0: 10px; --s1: 14px; --s2: 18px; --s3: 24px; --s4: 32px;
+}
+
+body{ line-height: var(--leading); letter-spacing: .005em }
+
+/* Generic copy rhythm inside main content */
+main .wrap p{ margin: 0 0 var(--s1); max-width: 68ch }
+main .wrap ul{ margin: 0 0 var(--s1) 1.2rem }
+main .wrap li + li{ margin-top: var(--s-1) }
+
+/* Hero text spacing */
+.hero__copy h1{ margin: 0 0 var(--s1); line-height: var(--lh-tight) }
+.hero__copy p{ margin: 0 0 var(--s2) }
+
+/* Section headings */
+.section-title{ margin: var(--s0) 0 var(--s1) }
+
+/* Tiles */
+.tile{ padding: 16px 18px; gap: 14px }
+.tile h3{ margin: 2px 0 var(--s-1); line-height: 1.25 }
+.tile p{ margin: 0 }
+
+/* Cards (browse products) */
+.card{ padding: 16px }
+.card h3{ margin: var(--s1) 0 var(--s-1); line-height: 1.25 }
+.card .small{ line-height: 1.45 }
+
+/* Benefits band columns match spacing */
+.band__grid{ gap: var(--s2) }
+
+/* Normalize page paddings so everything lines up */
+:root{ --page-x: 32px; --page-y: 28px }
+.wrap{ max-width: 1120px; padding-left: var(--page-x); padding-right: var(--page-x) }
+.section{ padding: var(--page-y) 0 }
+main > .wrap{ padding-top: var(--page-y); padding-bottom: var(--page-y) }
